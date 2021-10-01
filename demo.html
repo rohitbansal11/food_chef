@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title>food chef</title>
+
+
+    <style>
+        body {
+            background-image: url(back.jpg);
+            background-size: cover;
+        }
+
+        form {
+            background-color: #e6ffff;
+            border: 1px solid rgb(160, 159, 159);
+        }
+
+        /* Full-width input fields */
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        input[type=text]:focus,
+        input[type=password]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+
+        /* Set a style for all buttons */
+        button {
+            background-color: #04AA6D;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+        button:hover {
+            opacity: 1;
+        }
+
+        /* Extra styles for the cancel button */
+        .cancelbtn {
+            padding: 14px 20px;
+            background-color: #f44336;
+        }
+
+        /* Float cancel and signup buttons and add an equal width */
+        .cancelbtn,
+        .signupbtn {
+            float: left;
+            width: 50%;
+        }
+
+        /* Add padding to container elements */
+        .container {
+            padding: 16px;
+        }
+
+        /* Clear floats */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Change styles for cancel button and signup button on extra small screens */
+        @media screen and (max-width: 300px) {
+
+            .cancelbtn,
+            .signupbtn {
+                width: 100%;
+            }
+        }
+
+
+        .addone,
+        .addtwo,
+        .addthree,
+        .addfour,
+        .addfive {
+            display: none;
+        }
+
+        .btn2,
+        .btn3,
+        .btn4,
+        .btn5,
+        .btn6,
+        .mytable {
+            display: none;
+        }
+
+        select {
+
+            width: 200px;
+            height: 60px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        textarea {
+            text-align: left;
+        }
+
+        .mydiv {
+            background-color: #e6ffff;
+            display: none;
+
+        }
+
+
+        li {
+            text-decoration: none;
+            background-color: aliceblue;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        th,
+        td {
+            text-align: center;
+            width: 200px;
+            border: 1px solid black;
+            padding: 5px;
+            margin-right: 70px;
+
+
+        }
+
+        table {
+            /* cellspacing */
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .num {
+            width: 100px;
+        }
+
+        .vali {
+            display: none;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div id="save_data">
+        <div class="container">
+
+            <form action="#" style="border:1px solid #ccc" id="myform">
+                <input type="hidden" id="saveindex">
+                <div class="container">
+                    <center>
+                        <h1>Food chef </h1>
+                    </center>
+
+
+                    <hr>
+
+                    <label for="email"><b>Name</b></label>
+                    <input type="text" placeholder="Enter Name " name="dish" id="name" onkeyup="namevali()">
+                    <p class="vali" id="namep">this field required</p>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label for="psw"><b>Name Ingredint</b></label>
+                            <input type="text" placeholder="Enter indegradent" class="inpf" name="indeg" id="inp">
+
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="psw"><b>Quentity</b></label>
+                            <input type="number" value="" name="indeg" id="num" class="num">
+
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="psw-repeat"><b>Select weight</b></label>
+                            <select name="indeg" id="sel">
+                                <option value="none">Select weight</option>
+                                <option value="G">G</option>
+                                <option value="kg">Kg</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <button class=" btn btn-outline-primary " type="button" id="btn1" onclick="btnone()"> Add
+                        indegradent</button>
+
+
+                    <div class="addone" id="addone">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label for="psw"><b>Name Ingredint</b></label>
+                                <input type="text" placeholder="Enter indegradent" name="indegone" id="inpone">
+
+                            </div>
+                            <div class="col-sm-2">
+                                <label for="psw"><b>Quentity</b></label>
+                                <input type="number" value="" class="num" name="indegone" id="numone">
+
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="psw-repeat"><b>Select weight</b></label>
+                                <select name="indegone" id="selone">
+                                    <option value="">Select weight</option>
+                                    <option value="G">G</option>
+                                    <option value="kg">Kg</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <button class=" btn btn-outline-primary btn2" type="button" id="btn2" onclick="btntwo()"> Add
+                        indegradent</button>
+
+                    <div class="addtwo" id="addtwo">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label for="psw"><b>Name Ingredint</b></label>
+                                <input type="text" placeholder="Enter indegradent" class="inpf" id="inptwo"
+                                    name="indegtwo">
+
+                            </div>
+                            <div class="col-sm-2">
+                                <label for="psw"><b>Quentity</b></label>
+                                <input type="number" value="" class="num" name="indegtwo" id="numtwo">
+
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="psw-repeat"><b>Select weight</b></label>
+                                <select name="indegtwo" id="seltwo">
+                                    <option value="">Select weight</option>
+                                    <option value="G">G</option>
+                                    <option value="kg">Kg</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <button class=" btn btn-outline-primary btn3" type="button" id="btn3" onclick="btnthree()"> Add
+                        indegradent</button>
+
+                    <div class="addthree" id="addthree">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label for="psw"><b>Name Ingredint</b></label>
+                                <input type="text" placeholder="Enter indegradent" class="inpf" id="inpthree"
+                                    name="indegthree">
+
+                            </div>
+                            <div class="col-sm-2">
+                                <label for="psw"><b>Quentity</b></label>
+                                <input type="number" value="" class="num" name="indegthree" id="numthree">
+
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="psw-repeat"><b>Select weight</b></label>
+                                <select name="indegthree" id="selthree">
+                                    <option value="">Select weight</option>
+                                    <option value="G">G</option>
+                                    <option value="kg">Kg</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <button class=" btn btn-outline-primary btn4" type="button" id="btn4" onclick="btnfour()"> Add
+                        indegradent</button>
+
+                    <div class="addfour" id="addfour">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label for="psw"><b>Name Ingredint</b></label>
+                                <input type="text" placeholder="Enter indegradent" class="inpf" id="inpfour"
+                                    name="indegfour">
+
+                            </div>
+                            <div class="col-sm-2">
+                                <label for="psw"><b>Quentity</b></label>
+                                <input type="number" value="" class="num" name="indegfour" id="numfour">
+
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="psw-repeat"><b>Select weight</b></label>
+                                <select name="indegfour" id="selfour">
+                                    <option value="">Select weight</option>
+                                    <option value="G">G</option>
+                                    <option value="kg">Kg</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <button class=" btn btn-outline-primary btn5" type="button" id="btn5" onclick="btnfive()"> Add
+                        indegradent</button>
+
+
+                    <div class="addfive" id="addfive">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label for="psw"><b>Name Ingredint</b></label>
+                                <input type="text" placeholder="Enter indegradent" class="inpf" id="inpfive"
+                                    name="indegfive">
+
+                            </div>
+                            <div class="col-sm-2">
+                                <label for="psw"><b>Quentity</b></label>
+                                <input type="number" value="" class="num" name="indegfive" id="numfive">
+
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="psw-repeat"><b>Select weight</b></label>
+                                <select name="indegfive" id="selfive">
+                                    <option value="">Select weight</option>
+                                    <option value="G">G</option>
+                                    <option value="kg">Kg</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label for="textarea"> Enter Recipi here......</label>
+                            <textarea rows="3" cols="64" name="comment" id="textarea" onkeyup="textvali()">
+                            </textarea>
+
+                        </div>
+                        <p class="vali" id="namet">this field required</p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label for="textarea">Enter Dish Url </label>
+                            <input type="text" name="url" id="url" onkeyup="urlvali()">
+                        </div>
+                        <p class="vali" id="nameu">this field required</p>
+                    </div>
+
+
+
+
+
+
+
+
+                    <br><br>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button type="submit" class="btn btn-outline-danger" id="savebtn">Save Recepi </button>
+                            <button type="submit" class="btn btn-outline-danger" id="updatebtn"
+                                style="display: none;">Update Recepi </button>
+
+                        </div>
+                        <div class="col-sm-6">
+                            <button type="button" class="btn btn-outline-danger" onclick="mydivshow()">Show
+                                Recepi</button>
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+    <br>
+    <br>
+
+
+    <div class="container mydiv" id="mydiv">
+
+        <div class="row">
+            <div class="col-sm-3">
+                <input type="text" class="form_search" id="filter" placeholder="Search for names.."
+                    title="Type in a name">
+
+            </div>
+            <div class="col-sm-6">
+
+
+            </div>
+            <div class="col-sm-3">
+
+                <button class="btn btn-outline-primary" onclick="showData()"> See Alldata</button>
+            </div>
+
+            <div class="col-sm-4">
+                <div id="mylist">
+                    <ul id="ulmain" onclick="lang1(event);">
+
+                    </ul>
+
+                </div>
+
+
+
+
+            </div>
+            <div class="col-sm-8">
+                <table class="list" id="mylistform">
+                    <thead>
+                        <tr>
+                            <th>Dish</th>
+                            <th>Indegradent</th>
+
+                            <th>Recipe</th>
+                            <th>Url</th>
+                            <th>Edit </th>
+                            <th>delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myshowUsers">
+
+                    </tbody>
+                </table>
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+    </div>
+    <br>
+    <br>
+    <br>
+
+
+
+    <div class="container mytable" id="mytable">
+        <table class="list" id="formlist">
+            <thead>
+                <tr>
+                    <th>Dish</th>
+                    <th>Indegradent</th>
+
+                    <th>Recipe</th>
+                    <th>Url</th>
+                    <th>Edit </th>
+                    <th>delete</th>
+                </tr>
+            </thead>
+            <tbody id="showUsers">
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+    <a href=""></a>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <script>
+
+
+
+
+        document.querySelector('#filter').addEventListener('keyup', filterNames);
+        document.getElementById('textarea').innerHTML = document.getElementById('textarea').innerHTML.trim();
+
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        function namevali() {
+            let name = document.getElementById('name');
+            let namep = document.getElementById('namep');
+            if (name.value !== '') {
+                document.getElementById("name").style.border = "none";
+                namep.style.display = 'none';
+
+            }
+            if (name.value == '') {
+                document.getElementById("name").style.border = "thin  solid red";
+                namep.style.display = 'block';
+
+            }
+
+        }
+        function textvali() {
+            let textarea = document.getElementById('textarea');
+            let namet = document.getElementById('namet');
+            if (textarea.value !== '') {
+                document.getElementById("textarea").style.border = "none";
+                namet.style.display = 'none';
+
+            }
+            if (textarea.value == '') {
+                document.getElementById("textarea").style.border = "thin  solid red";
+                namet.style.display = 'block';
+
+            }
+
+        }
+
+        function urlvali() {
+            let url = document.getElementById('url');
+            let nameu = document.getElementById('nameu');
+            if (url.value !== '') {
+                document.getElementById("url").style.border = "none";
+                nameu.style.display = 'none';
+
+            }
+            if (url.value == '') {
+                document.getElementById("url").style.border = "thin  solid red";
+                nameu.style.display = 'block';
+
+            }
+
+        }
+
+
+
+
+
+
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        function lang1(event) {
+            var target = event.target || event.srcElement;
+            // alert(event.target.innerHTML);
+            document.querySelectorAll('.myli').forEach(function (a) {
+                a.remove()
+            })
+
+            console.log(event.target.innerHTML);
+            let listitem = event.target.innerHTML;
+
+            let tasklist = JSON.parse(localStorage.getItem('task'));
+
+
+
+
+
+
+
+
+            let fillt = tasklist.filter(function (student) {
+                return student.name.dish === listitem;
+            }).map(function (student) {
+
+                console.log(student.name);
+                console.log(student);
+                let myy = student.name.dish;
+
+
+                document.getElementById("myshowUsers").innerHTML = "";
+
+
+
+
+
+                let addDiv = document.createElement('tr');
+                addDiv.className = 'mylitr'
+
+
+                addDiv.innerHTML = ` 
+                    <td id='dishname'>`+ student.name.dish + `</td>
+                <td>
+                        <table border=5 bordercolor=green>
+                         <tr>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Type</th>
+                                
+                        </tr>
+                        <tr>
+                            <td>`+ student.name.inte[0] + `</td>
+                            <td>`+ student.name.inte[1] + `</td>
+                            <td>`+ student.name.inte[2] + `</td>
+                        </tr>
+                        <tr>
+                            <td>`+ student.name.inteone[0] + `</td>
+                            <td>`+ student.name.inteone[1] + `</td>
+                            <td>`+ student.name.inteone[2] + `</td>
+                        </tr>
+                        <tr>
+                            <td>`+ student.name.intetwo[0] + `</td>
+                            <td>`+ student.name.intetwo[1] + `</td>
+                            <td>`+ student.name.intetwo[2] + `</td>
+                        </tr>
+                        <tr>
+                            <td>`+ student.name.intethree[0] + `</td>
+                            <td>`+ student.name.intethree[1] + `</td>
+                            <td>`+ student.name.intethree[2] + `</td>
+                        </tr>
+                        <tr>
+                            <td>`+ student.name.intefour[0] + `</td>
+                            <td>`+ student.name.intefour[1] + `</td>
+                            <td>`+ student.name.intefour[2] + `</td>
+                        </tr>
+                        <tr>
+                            <td>`+ student.name.intefive[0] + `</td>
+                            <td>`+ student.name.intefive[1] + `</td>
+                            <td>`+ student.name.intefive[2] + `</td>
+                        </tr>
+                        </table>
+
+                </td>
+                        <td>`+ student.name.comment + `</td>
+                        <td><a href="`+ student.name.url + `" target="_blank">` + student.name.url + `</a></td>
+                        <td><a  class="btn btn-outline-danger" onclick="edittaskbynm()">Edit </a> </td>
+                        <td><a  class="btn btn-outline-danger" onclick="ondelbynm()">Delete </a></td>`;
+                document.getElementById("myshowUsers").appendChild(addDiv);
+
+
+
+
+
+
+            })
+
+
+
+
+
+            // Printing out the name of Basketball players
+            // basketballPlayers.forEach(function (players) {
+            //     let listnn=players.name.
+            //     console.log(listnn);
+            // });
+        }
+
+
+
+
+
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        function handleSubmit(event) {
+
+
+            let btn1 = document.getElementById('btn1');
+            let btn2 = document.getElementById('btn2');
+            let btn3 = document.getElementById('btn3');
+            let btn4 = document.getElementById('btn4');
+            let btn5 = document.getElementById('btn5');
+
+            /////////////////////////////////////////////////////
+            let addone = document.getElementById('addone');
+            let addtwo = document.getElementById('addtwo');
+            let addthree = document.getElementById('addthree');
+            let addfour = document.getElementById('addfour');
+            let addfive = document.getElementById('addfive');
+            ////////////////////////////////////////////////////////////
+            let savebtn = document.getElementById('savebtn');
+            let updatebtn = document.getElementById('updatebtn');
+
+            //////////////////////////////////////////////////////
+            let name = document.getElementById('name');
+            let textarea = document.getElementById('textarea');
+            let url = document.getElementById('url');
+            //////////////////////////////
+            let namep = document.getElementById('namep');
+            let namet = document.getElementById('namet');
+            let nameu = document.getElementById('nameu');
+            //////////////////////////////////////////////////////////
+
+            event.preventDefault();
+
+            const data = new FormData(event.target);
+
+            const value = Object.fromEntries(data.entries());
+
+            value.inte = data.getAll("indeg");
+            value.inteone = data.getAll('indegone');
+            value.intetwo = data.getAll('indegtwo');
+            value.intethree = data.getAll('indegthree');
+            value.intefour = data.getAll('indegfour');
+            value.intefive = data.getAll('indegfive');
+
+            console.log({ value })
+
+
+            const items = (() => {
+                const fieldValue = localStorage.getItem('task');
+                return fieldValue === null
+                    ? []
+                    : JSON.parse(fieldValue);
+            })();
+
+            // 3.
+            items.push({ "name": value });
+
+            // 4.
+            console.log('namer value test ');
+            console.log(name.value);
+            console.log(textarea.value);
+            console.log(url.value);
+
+            if (name.value == '') {
+                document.getElementById("name").style.border = "thin  solid red";
+                namep.style.display = 'block';
+
+            }
+            if (textarea.value == '') {
+                namet.style.display = 'block';
+                document.getElementById("textarea").style.border = "thin  solid red";
+
+            }
+            if (url.value == '') {
+                document.getElementById("url").style.border = "thin  solid red";
+                nameu.style.display = 'block';
+
+            }
+            if (name.value !== '' || textarea.value !== '' || url.value !== '') {
+                document.getElementById("name").style.border = "none";
+                namep.style.display = 'none';
+
+                localStorage.setItem('task', JSON.stringify(items));
+
+
+
+
+                savebtn.style.display = 'block';
+                btn1.style.display = 'block';
+                btn2.style.display = 'none';
+                btn3.style.display = 'none';
+                btn4.style.display = 'none';
+                btn5.style.display = 'none';
+                updatebtn.style.display = 'none';
+                addone.style.display = 'none';
+                addtwo.style.display = 'none';
+                addthree.style.display = 'none';
+                addfour.style.display = 'none';
+                addfive.style.display = 'none';
+                document.getElementById("myform").reset();
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+
+        function mydivshow() {
+            document.querySelectorAll('.selectable').forEach(function (a) {
+                a.remove()
+            })
+            var x = document.getElementById("mydiv");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                let user_record = new Array();
+                user_record = JSON.parse(localStorage.getItem("task")) ? JSON.parse(localStorage.getItem("task")) : []
+                if (user_record) {
+
+                    for (let i = 0; i < user_record.length; i++) {
+
+
+                        nameList = "<li class='selectable'>" + user_record[i].name.dish + "</li>";
+                        document.getElementById("ulmain").innerHTML += nameList;
+                        console.log(user_record[i].name.dish);
+                    }
+
+
+
+
+                }
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        //////////////////////////////////////////////////////////
+        // search
+        function filterNames(e) {
+            const text = e.target.value.toLowerCase();
+            document.querySelectorAll('.selectable').forEach(
+                function (name) {
+                    let item = name.firstChild.textContent;
+                    if (item.toLowerCase().indexOf(text) != -1) {
+                        name.style.display = 'block';
+                    } else {
+                        name.style.display = 'none';
+                    }
+                }
+            );
+        }
+
+        /////////////////////////////////////////////////////////////////////
+
+
+        function showData() {
+
+            var x = document.getElementById("mytable");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                document.getElementById("showUsers").innerHTML = "";
+                let user_record = new Array();
+                user_record = JSON.parse(localStorage.getItem("task")) ? JSON.parse(localStorage.getItem("task")) : []
+                if (user_record) {
+                    for (let i = 0; i < user_record.length; i++) {
+                        let addDiv = document.createElement('tr');
+                        addDiv.className = "myttr";
+
+                        addDiv.innerHTML = ` 
+                        <td id='dishname'>`+ user_record[i].name.dish + `</td>
+                        <td>
+                        <table border=5 bordercolor=green>
+                         <tr>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Type</th>
+                                
+                        </tr>
+                        <tr>
+                            <td>`+ user_record[i].name.inte[0] + `</td>
+                            <td>`+ user_record[i].name.inte[1] + `</td>
+                            <td>`+ user_record[i].name.inte[2] + `</td>
+                        </tr>
+                        <tr>
+                            <td>`+ user_record[i].name.inteone[0] + `</td>
+                            <td>`+ user_record[i].name.inteone[1] + `</td>
+                            <td>`+ user_record[i].name.inteone[2] + `</td>
+                        </tr>
+                        <tr>
+                            <td>`+ user_record[i].name.intetwo[0] + `</td>
+                            <td>`+ user_record[i].name.intetwo[1] + `</td>
+                            <td>`+ user_record[i].name.intetwo[2] + `</td>
+                        </tr>
+                        <tr>
+                            <td>`+ user_record[i].name.intethree[0] + `</td>
+                            <td>`+ user_record[i].name.intethree[1] + `</td>
+                            <td>`+ user_record[i].name.intethree[2] + `</td>
+                        </tr>
+                        <tr>
+                            <td>`+ user_record[i].name.intefour[0] + `</td>
+                            <td>`+ user_record[i].name.intefour[1] + `</td>
+                            <td>`+ user_record[i].name.intefour[2] + `</td>
+                        </tr>
+                        <tr>
+                            <td>`+ user_record[i].name.intefive[0] + `</td>
+                            <td>`+ user_record[i].name.intefive[1] + `</td>
+                            <td>`+ user_record[i].name.intefive[2] + `</td>
+                        </tr>
+                        </table>
+</td>
+                        <td>`+ user_record[i].name.comment + `</td>
+                        <td><a href="`+ user_record[i].name.url + `" target="_blank">` + user_record[i].name.url + `</a></td>
+                        <td><a  class="btn btn-outline-danger" onclick="edittask(${i})">Edit </a> </td>
+                        <td><a  class="btn btn-outline-danger" onclick="ondel(${i})">Delete </a></td>`;
+                        document.getElementById("showUsers").appendChild(addDiv);
+
+                    }
+                }
+            } else {
+                x.style.display = "none";
+            }
+
+        }
+
+
+        // delete
+        function ondel(i) {
+            console.log(i);
+
+            let webtask = localStorage.getItem('task');
+            console.log(webtask);
+            let taskobj = JSON.parse(webtask);
+            console.log(taskobj);
+            taskobj.splice(i, 1);
+            localStorage.setItem('task', JSON.stringify(taskobj));
+
+            // var delitem = JSON.parse()
+            // delitem.splice(i, 1);
+            // localStorage.setItem('user', JSON.stringify(delitem));
+            // var key = document.getElementById('fullName').value; //gets key from user
+            // localStorage.removeItem(key) //passes key to the removeItem method
+            // console.log("remove items");
+
+            lisdel()
+            tabledel()
+
+        }
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////////
+
+        function ondelbynm() {
+            let dishname = document.getElementById('dishname').innerText;
+
+            let taskobj = JSON.parse(localStorage.getItem('task'));
+            i = taskobj.findIndex(x => x.name.dish === dishname);
+            console.log('hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii');
+            console.log(i);
+            console.log(dishname);
+            taskobj.splice(i, 1);
+            localStorage.setItem('task', JSON.stringify(taskobj));
+            lisdel()
+
+        }
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
+        // edittask by single
+
+        function edittaskbynm() {
+            let dishname = document.getElementById('dishname').innerText;
+
+            let taskobj = JSON.parse(localStorage.getItem('task'));
+            i = taskobj.findIndex(x => x.name.dish === dishname);
+            console.log('hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii');
+            console.log(i);
+            console.log(dishname);
+
+            let name, num, numone, url, numtwo, numthree, numfour, numfive, inp, inpone, inptwo, inpthree, inpfour, inpfive, sel, selone, seltwo, selthree, selfour, selfive, textarea;
+            name = document.getElementById('name');
+            textarea = document.getElementById('textarea');
+            url = document.getElementById('url');
+
+            inp = document.getElementById('inp');
+            sel = document.getElementById('sel');
+            num = document.getElementById('num');
+
+
+            inpone = document.getElementById('inpone');
+            selone = document.getElementById('selone');
+            numone = document.getElementById('numone');
+
+            inptwo = document.getElementById('inptwo');
+            seltwo = document.getElementById('seltwo');
+            numtwo = document.getElementById('numtwo');
+
+
+            inpthree = document.getElementById('inpthree');
+            selthree = document.getElementById('selthree');
+            numthree = document.getElementById('numthree');
+
+
+            inpfour = document.getElementById('inpfour');
+            selfour = document.getElementById('selfour');
+            numfour = document.getElementById('numfour');
+
+            inpfive = document.getElementById('inpfive');
+            selfive = document.getElementById('selfive');
+            numfive = document.getElementById('numfive');
+
+            ////////////////////////////////////////////////////////
+
+            let btn1 = document.getElementById('btn1');
+            let btn2 = document.getElementById('btn2');
+            let btn3 = document.getElementById('btn3');
+            let btn4 = document.getElementById('btn4');
+            let btn5 = document.getElementById('btn5');
+
+            /////////////////////////////////////////////////////
+            let addone = document.getElementById('addone');
+            let addtwo = document.getElementById('addtwo');
+            let addthree = document.getElementById('addthree');
+            let addfour = document.getElementById('addfour');
+            let addfive = document.getElementById('addfive');
+            ////////////////////////////////////////////////////////////
+            let savebtn = document.getElementById('savebtn');
+            let updatebtn = document.getElementById('updatebtn');
+            /////////////////////////////////////////////////////////////
+
+
+
+            let saveindex = document.getElementById("saveindex");
+
+            saveindex.value = i;
+            console.log(saveindex.value);
+            let webtask = JSON.parse(localStorage.getItem('task'));
+
+            console.log(webtask[i]["name"]['dish']);
+            console.log(webtask[i]["name"]['inte'][0]);
+
+            name.value = webtask[i]['name']['dish'];
+
+            inp.value = webtask[i]['name']['inte'][0];
+            num.value = webtask[i]['name']['inte'][1];
+            sel.value = webtask[i]['name']['inte'][2];
+
+            inpone.value = webtask[i]['name']['inteone'][0];
+            numone.value = webtask[i]['name']['inteone'][1];
+            selone.value = webtask[i]['name']['inteone'][2];
+
+            inptwo.value = webtask[i]['name']['intetwo'][0];
+            numtwo.value = webtask[i]['name']['intetwo'][1];
+            seltwo.value = webtask[i]['name']['intetwo'][2];
+
+            inpthree.value = webtask[i]['name']['intethree'][0];
+            numthree.value = webtask[i]['name']['intethree'][1];
+            selthree.value = webtask[i]['name']['intethree'][2];
+
+            inpfour.value = webtask[i]['name']['intefour'][0];
+            numfour.value = webtask[i]['name']['intefour'][1];
+            selfour.value = webtask[i]['name']['intefour'][2];
+
+            inpfive.value = webtask[i]['name']['intefive'][0];
+            numfive.value = webtask[i]['name']['intefive'][1];
+            selfive.value = webtask[i]['name']['intefive'][2];
+
+            textarea.value = webtask[i]['name']['comment'];
+            url.value = webtask[i]['name']['url'];
+
+
+
+            savebtn.style.display = 'none';
+            btn1.style.display = 'none';
+            btn2.style.display = 'none';
+            btn3.style.display = 'none';
+            btn4.style.display = 'none';
+            btn5.style.display = 'none';
+            updatebtn.style.display = 'block';
+            addone.style.display = 'block';
+            addtwo.style.display = 'block';
+            addthree.style.display = 'block';
+            addfour.style.display = 'block';
+            addfive.style.display = 'block';
+
+
+
+
+
+
+        }
+
+
+
+        /////////////////////////////////////////////////////////////////////////////////
+        // edit table
+
+        // edittask
+        function edittask(i) {
+
+            let name, num, numone, url, numtwo, numthree, numfour, numfive, inp, inpone, inptwo, inpthree, inpfour, inpfive, sel, selone, seltwo, selthree, selfour, selfive, textarea;
+            name = document.getElementById('name');
+            textarea = document.getElementById('textarea');
+            url = document.getElementById('url');
+
+            inp = document.getElementById('inp');
+            sel = document.getElementById('sel');
+            num = document.getElementById('num');
+
+
+            inpone = document.getElementById('inpone');
+            selone = document.getElementById('selone');
+            numone = document.getElementById('numone');
+
+            inptwo = document.getElementById('inptwo');
+            seltwo = document.getElementById('seltwo');
+            numtwo = document.getElementById('numtwo');
+
+
+            inpthree = document.getElementById('inpthree');
+            selthree = document.getElementById('selthree');
+            numthree = document.getElementById('numthree');
+
+
+            inpfour = document.getElementById('inpfour');
+            selfour = document.getElementById('selfour');
+            numfour = document.getElementById('numfour');
+
+            inpfive = document.getElementById('inpfive');
+            selfive = document.getElementById('selfive');
+            numfive = document.getElementById('numfive');
+
+            ////////////////////////////////////////////////////////
+
+            let btn1 = document.getElementById('btn1');
+            let btn2 = document.getElementById('btn2');
+            let btn3 = document.getElementById('btn3');
+            let btn4 = document.getElementById('btn4');
+            let btn5 = document.getElementById('btn5');
+
+            /////////////////////////////////////////////////////
+            let addone = document.getElementById('addone');
+            let addtwo = document.getElementById('addtwo');
+            let addthree = document.getElementById('addthree');
+            let addfour = document.getElementById('addfour');
+            let addfive = document.getElementById('addfive');
+            ////////////////////////////////////////////////////////////
+            let savebtn = document.getElementById('savebtn');
+            let updatebtn = document.getElementById('updatebtn');
+            /////////////////////////////////////////////////////////////
+
+
+
+            let saveindex = document.getElementById("saveindex");
+
+            saveindex.value = i;
+            console.log(saveindex.value);
+            let webtask = JSON.parse(localStorage.getItem('task'));
+
+            console.log(webtask[i]["name"]['dish']);
+            console.log(webtask[i]["name"]['inte'][0]);
+
+            name.value = webtask[i]['name']['dish'];
+
+            inp.value = webtask[i]['name']['inte'][0];
+            num.value = webtask[i]['name']['inte'][1];
+            sel.value = webtask[i]['name']['inte'][2];
+
+            inpone.value = webtask[i]['name']['inteone'][0];
+            numone.value = webtask[i]['name']['inteone'][1];
+            selone.value = webtask[i]['name']['inteone'][2];
+
+            inptwo.value = webtask[i]['name']['intetwo'][0];
+            numtwo.value = webtask[i]['name']['intetwo'][1];
+            seltwo.value = webtask[i]['name']['intetwo'][2];
+
+            inpthree.value = webtask[i]['name']['intethree'][0];
+            numthree.value = webtask[i]['name']['intethree'][1];
+            selthree.value = webtask[i]['name']['intethree'][2];
+
+            inpfour.value = webtask[i]['name']['intefour'][0];
+            numfour.value = webtask[i]['name']['intefour'][1];
+            selfour.value = webtask[i]['name']['intefour'][2];
+
+            inpfive.value = webtask[i]['name']['intefive'][0];
+            numfive.value = webtask[i]['name']['intefive'][1];
+            selfive.value = webtask[i]['name']['intefive'][2];
+
+            textarea.value = webtask[i]['name']['comment'];
+            url.value = webtask[i]['name']['url'];
+
+
+
+            savebtn.style.display = 'none';
+            btn1.style.display = 'none';
+            btn2.style.display = 'none';
+            btn3.style.display = 'none';
+            btn4.style.display = 'none';
+            btn5.style.display = 'none';
+            updatebtn.style.display = 'block';
+            addone.style.display = 'block';
+            addtwo.style.display = 'block';
+            addthree.style.display = 'block';
+            addfour.style.display = 'block';
+            addfive.style.display = 'block';
+
+
+
+
+
+
+
+            // // addtaskinput.value = taskObj[index]['task_name'];
+            // editfullName.value= taskObj[i]['fullName'];
+
+            // editemail.value = taskObj[i]['email'];
+            // editmobile.value = taskObj[i]['mobile'];
+            // editstate.value = taskObj[i]['state'];
+            // editcity.value = taskObj[i]['city'];
+            // addtaskbtn.style.display='block';
+            // savebtn.style.display='none';
+
+        }
+
+        // savetask
+        let savebtn = document.getElementById('savebtn');
+        let updatebtn = document.getElementById('updatebtn');
+
+        updatebtn.addEventListener("click", task);
+        function task() {
+            let name, num, numone, url, numtwo, numthree, numfour, numfive, inp, inpone, inptwo, inpthree, inpfour, inpfive, sel, selone, seltwo, selthree, selfour, selfive, textarea;
+            name = document.getElementById('name');
+            textarea = document.getElementById('textarea');
+            url = document.getElementById('url');
+
+            inp = document.getElementById('inp');
+            sel = document.getElementById('sel');
+            num = document.getElementById('num');
+
+
+            inpone = document.getElementById('inpone');
+            selone = document.getElementById('selone');
+            numone = document.getElementById('numone');
+
+            inptwo = document.getElementById('inptwo');
+            seltwo = document.getElementById('seltwo');
+            numtwo = document.getElementById('numtwo');
+
+
+            inpthree = document.getElementById('inpthree');
+            selthree = document.getElementById('selthree');
+            numthree = document.getElementById('numthree');
+
+
+            inpfour = document.getElementById('inpfour');
+            selfour = document.getElementById('selfour');
+            numfour = document.getElementById('numfour');
+
+            inpfive = document.getElementById('inpfive');
+            selfive = document.getElementById('selfive');
+            numfive = document.getElementById('numfive');
+
+
+            ////////////////////////////////////////////////////////
+
+            let btn1 = document.getElementById('btn1');
+            let btn2 = document.getElementById('btn2');
+            let btn3 = document.getElementById('btn3');
+            let btn4 = document.getElementById('btn4');
+            let btn5 = document.getElementById('btn5');
+
+            /////////////////////////////////////////////////////
+            let addone = document.getElementById('addone');
+            let addtwo = document.getElementById('addtwo');
+            let addthree = document.getElementById('addthree');
+            let addfour = document.getElementById('addfour');
+            let addfive = document.getElementById('addfive');
+            ////////////////////////////////////////////////////////////
+            let savebtn = document.getElementById('savebtn');
+            let updatebtn = document.getElementById('updatebtn');
+            /////////////////////////////////////////////////////////////
+
+
+
+            let webtask = JSON.parse(localStorage.getItem("task"));
+
+            let saveindex = document.getElementById("saveindex").value;
+            // taskObj[saveindex] = 
+
+            for (keys in webtask[saveindex]['name']) {
+                if (keys == 'dish') {
+                    // taskObj[saveindex].task_name = addtaskinput.value;
+                    webtask[saveindex]['name']['dish'] = name.value;
+
+                    webtask[saveindex]['name']['inte'][0] = inp.value;
+                    webtask[saveindex]['name']['inte'][1] = num.value;
+                    webtask[saveindex]['name']['inte'][2] = sel.value;
+
+                    webtask[saveindex]['name']['inteone'][0] = inpone.value;
+                    webtask[saveindex]['name']['inteone'][1] = numone.value;
+                    webtask[saveindex]['name']['inteone'][2] = selone.value;
+
+                    webtask[saveindex]['name']['intetwo'][0] = inptwo.value;
+                    webtask[saveindex]['name']['intetwo'][1] = numtwo.value;
+                    webtask[saveindex]['name']['intetwo'][2] = seltwo.value;
+
+                    webtask[saveindex]['name']['intethree'][0] = inpthree.value;
+                    webtask[saveindex]['name']['intethree'][1] = numthree.value;
+                    webtask[saveindex]['name']['intethree'][2] = selthree.value;
+
+                    webtask[saveindex]['name']['intefour'][0] = inpfour.value;
+                    webtask[saveindex]['name']['intefour'][1] = numfour.value;
+                    webtask[saveindex]['name']['intefour'][2] = selfour.value;
+
+                    webtask[saveindex]['name']['intefive'][0] = inpfive.value;
+                    webtask[saveindex]['name']['intefive'][1] = numfive.value;
+                    webtask[saveindex]['name']['intefive'][2] = selfive.value;
+
+                    webtask[saveindex]['name']['comment'] = textarea.value;
+                    webtask[saveindex]['name']['url'] = url.value;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    //  taskObj[saveindex]['fullName'] = editfullName.value;
+                    //  taskObj[saveindex]['email'] = editemail.value;
+                    //  taskObj[saveindex]['mobile'] = editmobile.value;
+                    //  taskObj[saveindex]['state'] = editstate.value;
+                    //  taskObj[saveindex]['city'] = editcity.value;
+
+
+                }
+                // if(keys == 'email'){
+                //     taskObj[saveindex].email = email;
+                // }
+                // if(keys == 'mobile'){
+                //     taskObj[saveindex].mobile = mobile;
+                // }
+                // if(keys == 'state'){
+                //     taskObj[saveindex].state = state;
+                // }
+                // if(keys == 'city'){
+                //     taskObj[saveindex].city = city;
+                // }
+            }
+            // taskObj[saveindex] = {'task_name':addtaskinput.value, 'completeStatus':false} ;
+            //  taskObj[saveindex][task_name] = addtaskinput.value;
+
+            localStorage.setItem("task", JSON.stringify(webtask));
+
+            savebtn.style.display = 'block';
+            btn1.style.display = 'block';
+            btn2.style.display = 'none';
+            btn3.style.display = 'none';
+            btn4.style.display = 'none';
+            btn5.style.display = 'none';
+            updatebtn.style.display = 'none';
+            addone.style.display = 'none';
+            addtwo.style.display = 'none';
+            addthree.style.display = 'none';
+            addfour.style.display = 'none';
+            addfive.style.display = 'none';
+            document.getElementById("myform").reset();
+
+            lisdel()
+            tabledel()
+
+
+
+        }
+
+
+
+
+
+
+        const form = document.getElementById('myform');
+        form.addEventListener("submit", handleSubmit);
+
+        function btnone() {
+            let btn1 = document.getElementById('btn1');
+            let addone = document.getElementById('addone');
+            let btn2 = document.getElementById('btn2');
+
+
+            btn1.style.display = 'none';
+            addone.style.display = 'block';
+            btn2.style.display = 'block';
+
+
+        }
+        function btntwo() {
+            let btn2 = document.getElementById('btn2');
+            let addtwo = document.getElementById('addtwo');
+            let btn3 = document.getElementById('btn3');
+
+
+            btn2.style.display = 'none';
+            addtwo.style.display = 'block';
+            btn3.style.display = 'block';
+
+
+
+        }
+
+        function btnthree() {
+            let btn3 = document.getElementById('btn3');
+            let addthree = document.getElementById('addthree');
+            let btn4 = document.getElementById('btn4');
+
+
+            btn3.style.display = 'none';
+            addthree.style.display = 'block';
+            btn4.style.display = 'block';
+
+
+
+        }
+        function btnfour() {
+            console.log('btn 4');
+            let btn4 = document.getElementById('btn4');
+            let addfour = document.getElementById('addfour');
+            let btn5 = document.getElementById('btn5');
+
+
+            btn4.style.display = 'none';
+            addfour.style.display = 'block';
+            btn5.style.display = 'block';
+
+
+
+        }
+        function btnfive() {
+            console.log('btn 5');
+            let btn5 = document.getElementById('btn5');
+            let addfour = document.getElementById('addfour');
+
+
+
+            btn5.style.display = 'none';
+            addfive.style.display = 'block';
+
+
+
+
+        }
+
+
+
+        function lisdel() {
+            document.querySelectorAll('.selectable').forEach(function (a) {
+                a.remove()
+            })
+
+
+            let user_record = new Array();
+            user_record = JSON.parse(localStorage.getItem("task")) ? JSON.parse(localStorage.getItem("task")) : []
+            if (user_record) {
+
+                for (let i = 0; i < user_record.length; i++) {
+
+
+                    nameList = "<li class='selectable'>" + user_record[i].name.dish + "</li>";
+                    document.getElementById("ulmain").innerHTML += nameList;
+                    console.log(user_record[i].name.dish);
+                }
+
+
+
+
+            }
+            document.querySelectorAll('.mylitr').forEach(function (a) {
+                a.remove()
+            })
+
+
+
+
+
+        }
+
+        function tabledel() {
+            document.querySelectorAll('.myttr').forEach(function (a) {
+                a.remove()
+            })
+
+            document.getElementById("showUsers").innerHTML = "";
+            let user_record = new Array();
+            user_record = JSON.parse(localStorage.getItem("task")) ? JSON.parse(localStorage.getItem("task")) : []
+            if (user_record) {
+                for (let i = 0; i < user_record.length; i++) {
+                    let addDiv = document.createElement('tr');
+                    addDiv.className = "myttr";
+
+                    addDiv.innerHTML = ` 
+                    <td>`+ user_record[i].name.dish + `</td>
+                    <td>
+                        <table border=5 bordercolor=green>
+                         <tr>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Type</th>
+                                
+                        </tr>
+                        <tr>
+                            <td>`+ user_record[i].name.inte[0] + `</td>
+                            <td>`+ user_record[i].name.inte[1] + `</td>
+                            <td>`+ user_record[i].name.inte[2] + `</td>
+                        </tr>
+                        <tr>
+                            <td>`+ user_record[i].name.inteone[0] + `</td>
+                            <td>`+ user_record[i].name.inteone[1] + `</td>
+                            <td>`+ user_record[i].name.inteone[2] + `</td>
+                        </tr>
+                        <tr>
+                            <td>`+ user_record[i].name.intetwo[0] + `</td>
+                            <td>`+ user_record[i].name.intetwo[1] + `</td>
+                            <td>`+ user_record[i].name.intetwo[2] + `</td>
+                        </tr>
+                        <tr>
+                            <td>`+ user_record[i].name.intethree[0] + `</td>
+                            <td>`+ user_record[i].name.intethree[1] + `</td>
+                            <td>`+ user_record[i].name.intethree[2] + `</td>
+                        </tr>
+                        <tr>
+                            <td>`+ user_record[i].name.intefour[0] + `</td>
+                            <td>`+ user_record[i].name.intefour[1] + `</td>
+                            <td>`+ user_record[i].name.intefour[2] + `</td>
+                        </tr>
+                        <tr>
+                            <td>`+ user_record[i].name.intefive[0] + `</td>
+                            <td>`+ user_record[i].name.intefive[1] + `</td>
+                            <td>`+ user_record[i].name.intefive[2] + `</td>
+                        </tr>
+                        </table>
+</td>
+                        <td>`+ user_record[i].name.comment + `</td>
+                        <td><a href="`+ user_record[i].name.url + `" target="_blank">` + user_record[i].name.url + `</a></td>
+                        <td><a  class="btn btn-outline-danger" onclick="edittask(${i})">Edit </a> </td>
+                        <td><a  class="btn btn-outline-danger" onclick="ondel(${i})">Delete </a></td>`;
+                    document.getElementById("showUsers").appendChild(addDiv);
+
+                }
+            }
+
+        }
+
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>
